@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aliser.space/"/>
-  <updated>2016-06-16T07:52:47.271Z</updated>
+  <updated>2016-06-16T08:05:43.136Z</updated>
   <id>http://aliser.space/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://aliser.space/2016/06/16/%E6%88%91%E7%9A%84%E6%96%87%E6%A1%A3/"/>
     <id>http://aliser.space/2016/06/16/我的文档/</id>
     <published>2016-06-16T07:51:20.000Z</published>
-    <updated>2016-06-16T07:52:47.271Z</updated>
+    <updated>2016-06-16T08:05:43.136Z</updated>
     
     <content type="html"></content>
     
@@ -29,6 +29,8 @@
     </summary>
     
     
+      <category term="hehe  r" scheme="http://aliser.space/tags/hehe-r/"/>
+    
   </entry>
   
   <entry>
@@ -36,7 +38,7 @@
     <link href="http://aliser.space/2016/06/16/Linux%E5%BB%BA%E7%AB%99%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <id>http://aliser.space/2016/06/16/Linux建站环境配置/</id>
     <published>2016-06-16T07:33:41.000Z</published>
-    <updated>2016-06-16T07:55:58.390Z</updated>
+    <updated>2016-06-16T08:05:18.798Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;h1 id=&quot;1-首先检查Linux上是否有apache服务&quot;&gt;&lt;a href=&quot;#1-首先检查Linux上是否有apache服务&quot; class=&quot;headerlink&quot; title=&quot;1.首先检查Linux上是否有apache服务&quot;&gt;&lt;/a&gt;1.首先检查Linux上是否有apache服务&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;prm -qa |grep httpd  
@@ -62,7 +64,7 @@ prm -qi httpd
     </summary>
     
     
-      <category term="centos6.5" scheme="http://aliser.space/tags/centos6-5/"/>
+      <category term="centos6.5  apache  PHP  MySql" scheme="http://aliser.space/tags/centos6-5-apache-PHP-MySql/"/>
     
   </entry>
   
