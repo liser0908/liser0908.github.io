@@ -16,46 +16,43 @@
     
     
 
-    <meta name="description" content="1.首先检查Linux上是否有apache服务prm -qa |grep httpd  
-prm -qi httpd
+    <meta name="description" content="apache 基金会组织产品有：httpd www服务器tomcat jsp www服务器…
+1.首先检查Linux上是否有apache服务prm -qa |grep httpd  
+prm -qi httpd 
 如果没有，进行安装 
 prm install httpd
-启动Apache服务在网络正常的情况下
+启动Apache服务在网络正常的情况下，启动服务器
 
-apachectl stop
+service httpd start
 
-查看apache 启动服务是否启动
-
-ps -aux | grep httpd">
+查看apache 启动服务是否">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux建站环境配置 | Aliser">
 <meta property="og:url" content="http://aliser.space/2016/06/16/Linux建站环境配置/index.html">
 <meta property="og:site_name" content="Aliser">
-<meta property="og:description" content="1.首先检查Linux上是否有apache服务prm -qa |grep httpd  
-prm -qi httpd
+<meta property="og:description" content="apache 基金会组织产品有：httpd www服务器tomcat jsp www服务器…
+1.首先检查Linux上是否有apache服务prm -qa |grep httpd  
+prm -qi httpd 
 如果没有，进行安装 
 prm install httpd
-启动Apache服务在网络正常的情况下
+启动Apache服务在网络正常的情况下，启动服务器
 
-apachectl stop
+service httpd start
 
-查看apache 启动服务是否启动
-
-ps -aux | grep httpd">
-<meta property="og:updated_time" content="2016-06-16T08:05:18.798Z">
+查看apache 启动服务是否">
+<meta property="og:updated_time" content="2016-06-30T11:20:17.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux建站环境配置 | Aliser">
-<meta name="twitter:description" content="1.首先检查Linux上是否有apache服务prm -qa |grep httpd  
-prm -qi httpd
+<meta name="twitter:description" content="apache 基金会组织产品有：httpd www服务器tomcat jsp www服务器…
+1.首先检查Linux上是否有apache服务prm -qa |grep httpd  
+prm -qi httpd 
 如果没有，进行安装 
 prm install httpd
-启动Apache服务在网络正常的情况下
+启动Apache服务在网络正常的情况下，启动服务器
 
-apachectl stop
+service httpd start
 
-查看apache 启动服务是否启动
-
-ps -aux | grep httpd">
+查看apache 启动服务是否">
     
     
     
@@ -239,18 +236,77 @@ classes that you can use:
 
   <section id="post-content" class="article-content post">
     <blockquote>
+<p>apache 基金会组织<br>产品有：httpd www服务器<br>tomcat jsp www服务器…</p>
 <h1 id="1-首先检查Linux上是否有apache服务"><a href="#1-首先检查Linux上是否有apache服务" class="headerlink" title="1.首先检查Linux上是否有apache服务"></a>1.首先检查Linux上是否有apache服务</h1><pre><code>prm -qa |grep httpd  
-prm -qi httpd
+prm -qi httpd 
 </code></pre><p>如果没有，进行安装 </p>
 <pre><code>prm install httpd
-</code></pre><h1 id="启动Apache服务"><a href="#启动Apache服务" class="headerlink" title="启动Apache服务"></a>启动Apache服务</h1><p>在网络正常的情况下</p>
+</code></pre><h1 id="启动Apache服务"><a href="#启动Apache服务" class="headerlink" title="启动Apache服务"></a>启动Apache服务</h1><p>在网络正常的情况下，启动服务器</p>
 </blockquote>
-<pre><code>apachectl stop
+<pre><code>service httpd start
 </code></pre><blockquote>
 <p>查看apache 启动服务是否启动</p>
 </blockquote>
 <pre><code>ps -aux | grep httpd
+netstat -natp 查看80端口是否开启
+curl http://localhost:80 访问apache默认网页
+service iptables stop 确保防火墙已经关闭
+关闭SELinux(增强的安全保障) setenforce 0
+保证页面的有读的权限
+默认页面放在 &quot;/var/www/html&quot;
 </code></pre><blockquote>
+<p>apache的主配置文件<br>    /etc/httpd/conf/httpd.conf<br>apache全局配置，可以进行服务器优化</p>
+</blockquote>
+<pre><code>ServerToken OS 告知系统客户端的版本和操作系统
+ServerType 系统激活服务器的方式
+。。。
+</code></pre><blockquote>
+<p>监听端口 是使用apache监听在8000端口</p>
+</blockquote>
+<pre><code>Listen 192.170.2.1：8000
+</code></pre><blockquote>
+<p>监听在特定的ip，可以使得apache只监听外的ip请求</p>
+</blockquote>
+<pre><code>BindAddress 192.168.0.1
+</code></pre><h1 id="主机配置"><a href="#主机配置" class="headerlink" title="主机配置"></a>主机配置</h1><blockquote>
+<p>让其他人可以访问默认网页</p>
+</blockquote>
+<pre><code>chown -R apache:apache /var/www/http 把管理员的权限给它
+chomad 400 /var/www/http 只读权限
+</code></pre><blockquote>
+<p>DocumentRoot  设定服务器的共享路径</p>
+<h1 id="apache常见模块"><a href="#apache常见模块" class="headerlink" title="apache常见模块"></a>apache常见模块</h1><p>mod_defalte:压缩发送给客户端的内容<br>mod_rewrite:提供一个基础规则的（使用正则表达式分析器的）实时转向URL请求的引擎。</p>
+<h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><p>apache本不能处理PHP网页<br>工作原理：用户将请求发送到apache－&gt;判断网页类型－&gt;交付给PHP-&gt;php解释器处理（php-fpm【一个服务器程序】）<br>安装PHP</p>
+</blockquote>
+<pre><code>检查是否安装了PHP
+prm -qa |grep php
+安装PHP
+yum install php
+cat /etc/resolv.conf 网络DNS配置    
+php -v 查看php版本
+</code></pre><blockquote>
+<p>安装php-fpm</p>
+</blockquote>
+<pre><code>yum install php-fpm
+natstat -natp 检查是否安装
+</code></pre><blockquote>
+<p>安装Mysql</p>
+</blockquote>
+<pre><code>yum install mysql mysql-server
+</code></pre><blockquote>
+<p>远程登陆Mysql配置</p>
+<pre><code>在mysql的用户表设置用户的host地址
+update user set host=&quot;&quot; where host=&quot;&quot;;
+刷新权限设置
+flush privileges;
+利用函数对密码加密
+update user set password=Password(&quot;123456&quot;) ;
+本机![navicat设置](http://i.imgur.com/VhJ1jwC.png)
+</code></pre><p>使用Xftp上传phpcms安装网站文件到centos下的某个目录 /home/<strong><br>再apache的配置文件/etc/httpd/conf/httpd.conf中进行重新配置，将默认文件目录改为 /home/</strong><br>出现权限问题，更改目录和文件的权限（权限chmod -R 777 文件夹/文件）（）（所属chown -R apache:apache 文件夹/文件），以及关闭防火墙 setenforce 0</p>
+</blockquote>
+<pre><code>每次配置和应该重启一次apache
+</code></pre><blockquote>
+<p>使用yum search php-（扩展模块名） 来得到扩展模块的链接名<br>用yum install （链接名） 进行安装<br>在数据库配置时，localhost可能会出错，可以更改为127.0.0.1</p>
 </blockquote>
 
   </section>

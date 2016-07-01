@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aliser.space/"/>
-  <updated>2016-06-16T08:05:43.136Z</updated>
+  <updated>2016-06-23T06:08:46.095Z</updated>
   <id>http://aliser.space/</id>
   
   <author>
@@ -14,6 +14,119 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>门户网站设计文档</title>
+    <link href="http://aliser.space/2016/06/20/%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/"/>
+    <id>http://aliser.space/2016/06/20/门户网站设计文档/</id>
+    <published>2016-06-20T01:13:16.000Z</published>
+    <updated>2016-06-23T06:08:46.095Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;普通的三层架构&quot;&gt;&lt;a href=&quot;#普通的三层架构&quot; class=&quot;headerlink&quot; title=&quot;普通的三层架构&quot;&gt;&lt;/a&gt;普通的三层架构&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;软件开发采用三层架构的模式，三层指的是数据层、业务层、表示层，它们相当独立，又相互配合。&lt;br&gt;&lt;em&gt;数据访问层&lt;/em&gt;：DAL，是对数据库进行直接操作；主要完成增删改查，项目中和数据库进行交互的代码都放在数据层。&lt;br&gt;&lt;em&gt;业务逻辑层&lt;/em&gt;：BLL，是实现软件主要逻辑功能的部分，软件的所有逻辑操作代码都应该放在逻辑层。&lt;br&gt;&lt;em&gt;表示层&lt;/em&gt;：APP、Web，是同用户进行交互的部分，是软件的操作界面，表示层应该简洁、美观、操作方便，但不应该有复杂的代码。&lt;br&gt;&lt;em&gt;业务实体层&lt;/em&gt;：Model，是项目中出现所有业务实体类，是对实际操作对象的抽象。&lt;br&gt;&lt;em&gt;公共类&lt;/em&gt;：Common，是所有项目中都可能会用到的一些公共类。&lt;/p&gt;
+&lt;h1 id=&quot;业务需求&quot;&gt;&lt;a href=&quot;#业务需求&quot; class=&quot;headerlink&quot; title=&quot;业务需求&quot;&gt;&lt;/a&gt;业务需求&lt;/h1&gt;&lt;p&gt;1.新闻管理：新闻类&lt;br&gt;2.用户管理：用户类&lt;br&gt;3.用户评论：评论类  &lt;/p&gt;
+&lt;h1 id=&quot;数据库设计&quot;&gt;&lt;a href=&quot;#数据库设计&quot; class=&quot;headerlink&quot; title=&quot;数据库设计&quot;&gt;&lt;/a&gt;数据库设计&lt;/h1&gt;&lt;p&gt;1.新闻表：tb_News&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;标题：Title
+内容：Content
+来源：Source
+作者：Author
+发布时间：PublishTime
+类型：Type
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.用户表：tb_Users&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;账号：Account
+密码：Password
+姓名：Name
+角色：Role
+注册时间：RegisterTime
+最后登录时间：LastLoginTime
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;3.评论表：tb_Comment&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;内容：Content
+评论对象：NewsID
+评论者：UserID
+评论时间：PublishTime
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;一般而言数据库有几张表，对应的业务实体类就有几个&quot;&gt;&lt;a href=&quot;#一般而言数据库有几张表，对应的业务实体类就有几个&quot; class=&quot;headerlink&quot; title=&quot;一般而言数据库有几张表，对应的业务实体类就有几个&quot;&gt;&lt;/a&gt;一般而言数据库有几张表，对应的业务实体类就有几个&lt;/h2&gt;&lt;h2 id=&quot;在数据库创建数据表&quot;&gt;&lt;a href=&quot;#在数据库创建数据表&quot; class=&quot;headerlink&quot; title=&quot;在数据库创建数据表&quot;&gt;&lt;/a&gt;在数据库创建数据表&lt;/h2&gt;&lt;h2 id=&quot;创建三层架构项目&quot;&gt;&lt;a href=&quot;#创建三层架构项目&quot; class=&quot;headerlink&quot; title=&quot;创建三层架构项目&quot;&gt;&lt;/a&gt;创建三层架构项目&lt;/h2&gt;&lt;p&gt;1.新建一个空白解决方案&lt;br&gt;2.添加数据访问层DAL，它是一个类库&lt;br&gt;3.添加业务逻辑层BLL&lt;br&gt;4.添加表示层Web&lt;br&gt;5.添加业务实体类Model&lt;br&gt;6.添加公共类库Common&lt;br&gt;7.设置网站项目为起始项目&lt;br&gt;8.设置各个项目的命名空间&lt;br&gt;9.设置项目之间的引用关系  &lt;/p&gt;
+&lt;h1 id=&quot;创建业务实体类Model&quot;&gt;&lt;a href=&quot;#创建业务实体类Model&quot; class=&quot;headerlink&quot; title=&quot;创建业务实体类Model&quot;&gt;&lt;/a&gt;创建业务实体类Model&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;News、User、Comment
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;创建数据层的公共数据库访问类SQLHelper-cs&quot;&gt;&lt;a href=&quot;#创建数据层的公共数据库访问类SQLHelper-cs&quot; class=&quot;headerlink&quot; title=&quot;创建数据层的公共数据库访问类SQLHelper.cs&quot;&gt;&lt;/a&gt;创建数据层的公共数据库访问类SQLHelper.cs&lt;/h1&gt;&lt;p&gt;1.执行数据库的增删改操作，返回受影响的行数，使用MySqlCommand对&lt;br&gt;象的ExcuteNonQuery()方法。&lt;br&gt;2.执行数据库的查询操作，返回符合条件的记录集（DataReader），使用MySqlCommand对象的EcuteReader()方法。&lt;br&gt;3.执行数据库的查询操作，返回符合条件的记录集(DataSet),使用DataAdapter对象的Fill()方法。&lt;br&gt;4.执行数据库的查询操作，返回结果的首行首列（一个值），使用MySqlCommand对象的ExcuteScalar（）方法。  &lt;/p&gt;
+&lt;h1 id=&quot;创建数据访问层的操作类&quot;&gt;&lt;a href=&quot;#创建数据访问层的操作类&quot; class=&quot;headerlink&quot; title=&quot;创建数据访问层的操作类&quot;&gt;&lt;/a&gt;创建数据访问层的操作类&lt;/h1&gt;&lt;p&gt;1.NewsDataAccess.cs针对新闻的各种数据库操作  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1.添加新闻：bool AddNews(News news)
+2.删除新闻：bool DeleteNews(int newsID)
+3.修改新闻：bool ModifyNews(News news)
+4.获取指定新闻：bool GetNews(int newID)
+5.查找新闻：List&amp;lt;News&amp;gt; SearchNews(string key)
+6.获取所有新闻：List&amp;lt;News&amp;gt; GetAllNews()
+7.获取指定数量的新闻：List&amp;lt;News&amp;gt; GetNewsByCount(int count)
+8.获取指定类型的新闻：List&amp;lt;News&amp;gt; GetNewsByType(string type)
+9.获取指定类型和指定数量的新闻：List&amp;lt;News&amp;gt; GetNewsByTypeCount(string type,int count)
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.UserDataAccess.cs针对用户的各种数据库操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1.用户注册：bool Register（User user）
+2.用户登录：bool Login（string account，string password）
+3.删除用户：bool DelelteUser(int userID)
+4.用户修改密码：bool ChangePassword(int userID,string newPassword,string oldPassword)
+5.修改用户最后登录时间：bool ChangeLastLoginTime(int userID)
+6.检查账号是否已经存在：bool AccountIsExist(string account)
+7.获取指定用户对象：User GetUser(int userID)
+8.获取指定用户对象：User Getuser(string account)
+9.获取所有用户列表：List&amp;lt;User&amp;gt; GetAllUser()
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;3.CommentDataAccess.cs针对评论的各种数据库操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1.添加评论：bool AddComment(Comment comment)
+2.删除评论：bool DeleteComment(int commentID)
+3.获取指定新闻的评论列表：List&amp;lt;Comment&amp;gt; GetCommentByNews(int newsID)
+4.获取指定用户的评论列表：List&amp;lt;Comment&amp;gt; GetCommentByUser(int userID)
+5.获取指定用户的评论列表：List&amp;lt;Comment&amp;gt; GetCommentByAccount(string account)
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;#创建业务逻辑层#&lt;br&gt;业务逻辑层一般不出现数据库操作的代码，如果需要访问数据库，调用数据层已经写好的方法。业务逻辑层一般是进行程序的各种逻辑处理，我们把要进行的操作写成一个个方法，提供给表示层调用。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.NewsBusiness.cs  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1.添加新闻：bool AddNews(News news)
+2.删除新闻：bool DeleteNews(int newsID)
+3.修改新闻：bool ModifyNews(News news)
+4.获取指定新闻：bool GetNews(int newID)
+5.查找新闻：List&amp;lt;News&amp;gt; SearchNews(string key)
+6.获取所有新闻：List&amp;lt;News&amp;gt; GetAllNews()
+7.获取指定数量的新闻：List&amp;lt;News&amp;gt; GetNewsByCount(int count)
+8.获取指定类型的新闻：List&amp;lt;News&amp;gt; GetNewsByType(string type)
+9.获取指定类型和指定数量的新闻：List&amp;lt;News&amp;gt; GetNewsByTypeCount(string type,int count)
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.UserBusiness.cs  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1.用户注册：bool Register（User user）
+2.用户登录：bool Login（string account，string password）
+3.删除用户：bool DelelteUser(int userID)
+4.用户修改密码：bool ChangePassword(int userID,string newPassword,string oldPassword)
+5.修改用户最后登录时间：bool ChangeLastLoginTime(int userID)
+6.检查账号是否已经存在：bool AccountIsExist(string account)
+7.获取指定用户对象：User GetUser(int userID)
+8.获取指定用户对象：User Getuser(string account)
+9.获取所有用户列表：List&amp;lt;User&amp;gt; GetAllUser()
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;3.CommentBusiness.cs  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1.添加评论：bool AddComment(Comment comment)
+2.删除评论：bool DeleteComment(int commentID)
+3.获取指定新闻的评论列表：List&amp;lt;Comment&amp;gt; GetCommentByNews(int newsID)
+4.获取指定用户的评论列表：List&amp;lt;Comment&amp;gt; GetCommentByUser(int userID)
+5.获取指定用户的评论列表：List&amp;lt;Comment&amp;gt; GetCommentByAccount(string account)
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;h1 id=&quot;创建表示层页面&quot;&gt;&lt;a href=&quot;#创建表示层页面&quot; class=&quot;headerlink&quot; title=&quot;创建表示层页面&quot;&gt;&lt;/a&gt;创建表示层页面&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;AdminMaster&lt;/p&gt;
+&lt;h3 id=&quot;工具使用&quot;&gt;&lt;a href=&quot;#工具使用&quot; class=&quot;headerlink&quot; title=&quot;工具使用&quot;&gt;&lt;/a&gt;工具使用&lt;/h3&gt;&lt;p&gt;Teleport Ultra 可以下载网页的资源文件（网站复制）&lt;/p&gt;
+&lt;h1 id=&quot;在使用HTML标签应该注意的事项&quot;&gt;&lt;a href=&quot;#在使用HTML标签应该注意的事项&quot; class=&quot;headerlink&quot; title=&quot;在使用HTML标签应该注意的事项&quot;&gt;&lt;/a&gt;在使用HTML标签应该注意的事项&lt;/h1&gt;&lt;p&gt;１.&lt;input id=&quot;bt1&quot; type=&quot;button&quot; runat=&quot;server&quot; onclick=&quot;delete&quot;&gt; 此时的Onclick应该改成OnSeverClick &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;普通的三层架构&quot;&gt;&lt;a href=&quot;#普通的三层架构&quot; class=&quot;headerlink&quot; title=&quot;普通的三层架构&quot;&gt;&lt;/a&gt;普通的三层架构&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;软件开发采用三层架构的模式，三层指的是数据层、业务层、表示层，它们相当独立
+    
+    </summary>
+    
+    
+      <category term="三层架构、  Asp.Net、  C#" scheme="http://aliser.space/tags/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E3%80%81-Asp-Net%E3%80%81-C/"/>
+    
+  </entry>
   
   <entry>
     <title>我的测试文档</title>
@@ -38,28 +151,88 @@
     <link href="http://aliser.space/2016/06/16/Linux%E5%BB%BA%E7%AB%99%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <id>http://aliser.space/2016/06/16/Linux建站环境配置/</id>
     <published>2016-06-16T07:33:41.000Z</published>
-    <updated>2016-06-16T08:05:18.798Z</updated>
+    <updated>2016-06-30T11:20:17.434Z</updated>
     
     <content type="html">&lt;blockquote&gt;
+&lt;p&gt;apache 基金会组织&lt;br&gt;产品有：httpd www服务器&lt;br&gt;tomcat jsp www服务器…&lt;/p&gt;
 &lt;h1 id=&quot;1-首先检查Linux上是否有apache服务&quot;&gt;&lt;a href=&quot;#1-首先检查Linux上是否有apache服务&quot; class=&quot;headerlink&quot; title=&quot;1.首先检查Linux上是否有apache服务&quot;&gt;&lt;/a&gt;1.首先检查Linux上是否有apache服务&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;prm -qa |grep httpd  
-prm -qi httpd
+prm -qi httpd 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果没有，进行安装 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;prm install httpd
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;启动Apache服务&quot;&gt;&lt;a href=&quot;#启动Apache服务&quot; class=&quot;headerlink&quot; title=&quot;启动Apache服务&quot;&gt;&lt;/a&gt;启动Apache服务&lt;/h1&gt;&lt;p&gt;在网络正常的情况下&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;启动Apache服务&quot;&gt;&lt;a href=&quot;#启动Apache服务&quot; class=&quot;headerlink&quot; title=&quot;启动Apache服务&quot;&gt;&lt;/a&gt;启动Apache服务&lt;/h1&gt;&lt;p&gt;在网络正常的情况下，启动服务器&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;apachectl stop
+&lt;pre&gt;&lt;code&gt;service httpd start
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;查看apache 启动服务是否启动&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;pre&gt;&lt;code&gt;ps -aux | grep httpd
+netstat -natp 查看80端口是否开启
+curl http://localhost:80 访问apache默认网页
+service iptables stop 确保防火墙已经关闭
+关闭SELinux(增强的安全保障) setenforce 0
+保证页面的有读的权限
+默认页面放在 &amp;quot;/var/www/html&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;apache的主配置文件&lt;br&gt;    /etc/httpd/conf/httpd.conf&lt;br&gt;apache全局配置，可以进行服务器优化&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;ServerToken OS 告知系统客户端的版本和操作系统
+ServerType 系统激活服务器的方式
+。。。
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;监听端口 是使用apache监听在8000端口&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;Listen 192.170.2.1：8000
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;监听在特定的ip，可以使得apache只监听外的ip请求&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;BindAddress 192.168.0.1
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;主机配置&quot;&gt;&lt;a href=&quot;#主机配置&quot; class=&quot;headerlink&quot; title=&quot;主机配置&quot;&gt;&lt;/a&gt;主机配置&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;让其他人可以访问默认网页&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;chown -R apache:apache /var/www/http 把管理员的权限给它
+chomad 400 /var/www/http 只读权限
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;DocumentRoot  设定服务器的共享路径&lt;/p&gt;
+&lt;h1 id=&quot;apache常见模块&quot;&gt;&lt;a href=&quot;#apache常见模块&quot; class=&quot;headerlink&quot; title=&quot;apache常见模块&quot;&gt;&lt;/a&gt;apache常见模块&lt;/h1&gt;&lt;p&gt;mod_defalte:压缩发送给客户端的内容&lt;br&gt;mod_rewrite:提供一个基础规则的（使用正则表达式分析器的）实时转向URL请求的引擎。&lt;/p&gt;
+&lt;h1 id=&quot;PHP&quot;&gt;&lt;a href=&quot;#PHP&quot; class=&quot;headerlink&quot; title=&quot;PHP&quot;&gt;&lt;/a&gt;PHP&lt;/h1&gt;&lt;p&gt;apache本不能处理PHP网页&lt;br&gt;工作原理：用户将请求发送到apache－&amp;gt;判断网页类型－&amp;gt;交付给PHP-&amp;gt;php解释器处理（php-fpm【一个服务器程序】）&lt;br&gt;安装PHP&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;检查是否安装了PHP
+prm -qa |grep php
+安装PHP
+yum install php
+cat /etc/resolv.conf 网络DNS配置    
+php -v 查看php版本
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;安装php-fpm&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;yum install php-fpm
+natstat -natp 检查是否安装
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;安装Mysql&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;yum install mysql mysql-server
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;远程登陆Mysql配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在mysql的用户表设置用户的host地址
+update user set host=&amp;quot;&amp;quot; where host=&amp;quot;&amp;quot;;
+刷新权限设置
+flush privileges;
+利用函数对密码加密
+update user set password=Password(&amp;quot;123456&amp;quot;) ;
+本机![navicat设置](http://i.imgur.com/VhJ1jwC.png)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用Xftp上传phpcms安装网站文件到centos下的某个目录 /home/&lt;strong&gt;&lt;br&gt;再apache的配置文件/etc/httpd/conf/httpd.conf中进行重新配置，将默认文件目录改为 /home/&lt;/strong&gt;&lt;br&gt;出现权限问题，更改目录和文件的权限（权限chmod -R 777 文件夹/文件）（）（所属chown -R apache:apache 文件夹/文件），以及关闭防火墙 setenforce 0&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;每次配置和应该重启一次apache
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;使用yum search php-（扩展模块名） 来得到扩展模块的链接名&lt;br&gt;用yum install （链接名） 进行安装&lt;br&gt;在数据库配置时，localhost可能会出错，可以更改为127.0.0.1&lt;/p&gt;
 &lt;/blockquote&gt;
 </content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;h1 id=&quot;1-首先检查Linux上是否有apache服务&quot;&gt;&lt;a href=&quot;#1-首先检查Linux上是否有apache服务&quot; class=&quot;headerlink&quot; title=&quot;1.首先检查Linux上是否有apache服务&quot;&gt;&lt;/a&gt;1.首先
+&lt;p&gt;apache 基金会组织&lt;br&gt;产品有：httpd www服务器&lt;br&gt;tomcat jsp www服务器…&lt;/p&gt;
+&lt;h1 id=&quot;1-首先检查Linux上是否有apache服务&quot;&gt;&lt;a href=&quot;#1-首先检查Linux上是否有apache服
     
     </summary>
     
