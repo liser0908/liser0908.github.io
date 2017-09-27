@@ -4,9 +4,9 @@
   <subtitle>只知继续进取_</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://aliser.space/"/>
+  <link href="http://aliser.top/"/>
   <updated>2016-06-23T06:08:46.095Z</updated>
-  <id>http://aliser.space/</id>
+  <id>http://aliser.top/</id>
   
   <author>
     <name>Liser</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>门户网站设计文档</title>
-    <link href="http://aliser.space/2016/06/20/%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/"/>
-    <id>http://aliser.space/2016/06/20/门户网站设计文档/</id>
+    <link href="http://aliser.top/2016/06/20/%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/"/>
+    <id>http://aliser.top/2016/06/20/门户网站设计文档/</id>
     <published>2016-06-20T01:13:16.000Z</published>
     <updated>2016-06-23T06:08:46.095Z</updated>
     
@@ -124,14 +124,14 @@
     </summary>
     
     
-      <category term="三层架构、  Asp.Net、  C#" scheme="http://aliser.space/tags/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E3%80%81-Asp-Net%E3%80%81-C/"/>
+      <category term="三层架构、  Asp.Net、  C#" scheme="http://aliser.top/tags/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E3%80%81-Asp-Net%E3%80%81-C/"/>
     
   </entry>
   
   <entry>
     <title>我的测试文档</title>
-    <link href="http://aliser.space/2016/06/16/%E6%88%91%E7%9A%84%E6%96%87%E6%A1%A3/"/>
-    <id>http://aliser.space/2016/06/16/我的文档/</id>
+    <link href="http://aliser.top/2016/06/16/%E6%88%91%E7%9A%84%E6%96%87%E6%A1%A3/"/>
+    <id>http://aliser.top/2016/06/16/我的文档/</id>
     <published>2016-06-16T07:51:20.000Z</published>
     <updated>2016-06-16T08:05:43.136Z</updated>
     
@@ -142,14 +142,14 @@
     </summary>
     
     
-      <category term="hehe  r" scheme="http://aliser.space/tags/hehe-r/"/>
+      <category term="hehe  r" scheme="http://aliser.top/tags/hehe-r/"/>
     
   </entry>
   
   <entry>
     <title>Linux建站环境配置</title>
-    <link href="http://aliser.space/2016/06/16/Linux%E5%BB%BA%E7%AB%99%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    <id>http://aliser.space/2016/06/16/Linux建站环境配置/</id>
+    <link href="http://aliser.top/2016/06/16/Linux%E5%BB%BA%E7%AB%99%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>http://aliser.top/2016/06/16/Linux建站环境配置/</id>
     <published>2016-06-16T07:33:41.000Z</published>
     <updated>2016-06-30T11:20:17.434Z</updated>
     
@@ -237,7 +237,7 @@ update user set password=Password(&amp;quot;123456&amp;quot;) ;
     </summary>
     
     
-      <category term="centos6.5  apache  PHP  MySql" scheme="http://aliser.space/tags/centos6-5-apache-PHP-MySql/"/>
+      <category term="centos6.5  apache  PHP  MySql" scheme="http://aliser.top/tags/centos6-5-apache-PHP-MySql/"/>
     
   </entry>
   
